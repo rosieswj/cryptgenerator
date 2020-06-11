@@ -1,17 +1,32 @@
 
 #include <iostream>
-
+#include <string>
+#include <sstream>
 #include "binaryexp.h"
 #include "num_generator.h"
 #include "operator.h"
+#include "crypt.h"
 
 int main() {
   
   string s = "SEND + MORE = MONEY";
-  int idx = s.find("=");
-  cout << idx << endl;
+  Cryptarithm *crypt = new Cryptarithm(s);
+
+  // int idx = s.find("=");
+
+  // string left = s.substr(0, idx);
+  // string right = s.substr(idx+1);
+  // cout << left << "|" << right << endl;
+
+  // vector<string> words = getWords(left);
+  // for (string s: words) cout << s << endl;
+
   return 0;
 }
+
+
+
+
 
 /*
 string c = "abc";
