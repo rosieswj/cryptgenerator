@@ -6,21 +6,16 @@
 
 #include "exp.h"
 #include "operator.h"
-
+#include "binaryexp.h"
 
 class Cryptarithm {
     private: 
         const string TOKENS = "+-*/";
         enum Side { LEFT, RIGHT };
-
-        vector<Expression *> leftExps;
-        vector<Expression *> rightExps;
-        vector<Operator *> leftOps;
-        vector<Operator *> rightOps;
-
-        double evaluate(Side side);
-        void buildExpression(string s, Side side);
-
+        Expression *left;
+        Expression *right;
+        Expression * buildExpression(string s);
+    
     public:
         ~Cryptarithm();
         Cryptarithm(string s);

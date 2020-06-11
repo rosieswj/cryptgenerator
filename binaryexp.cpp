@@ -13,4 +13,7 @@ string BinaryExpression::get_name() {
 
 double BinaryExpression::eval() { return op->apply(e1, e2); }
 
-void BinaryExpression::store(int *dict) {}
+void BinaryExpression::store(int *dict) {
+  e1->store(dict);
+  e2->store(dict);
+}

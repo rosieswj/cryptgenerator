@@ -12,6 +12,12 @@ int main() {
   string s = "SEND + MORE = MONEY";
   Cryptarithm *crypt = new Cryptarithm(s);
 
+  int dict[26];
+  for (int i = 0; i < 26; i++) dict[i] = 1;
+  
+  crypt->checkCryptarithm(dict);
+  
+
   // int idx = s.find("=");
 
   // string left = s.substr(0, idx);

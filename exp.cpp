@@ -18,9 +18,9 @@ double WordExpression::eval() {
   val = 0.0;
   for (int i = 0; i < name.length(); i++) {
     char c = name[i];
-    int idx = c - 'a';
+    int idx = c - 'A';
     int digit_val = dict[idx];
-    val = val * 10 + digit_val;
+    val = val * 10 + (double)digit_val;
   }
   return val;
 }

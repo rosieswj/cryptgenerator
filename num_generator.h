@@ -9,7 +9,6 @@ class NumberGenerator {
  private:
   int n, k;
   vector<int*> v;
-  void printSubsetUtil(int* arr, int* temp, int index, int i, int n, int k);
   void generateUtil(int* arr, int* temp, int index, int i, int n, int k);
 
  public:
@@ -18,8 +17,6 @@ class NumberGenerator {
   void print();
   void printSubsets();
   void generate();
-
-  // vector<int[]> generate();
-};
+  };
 
 #endif

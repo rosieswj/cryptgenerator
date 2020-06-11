@@ -5,20 +5,13 @@
 Cryptarithm::Cryptarithm(string s) {
     const string SPLIT_AT_EQUAL = "=";
     int split_idx = s.find(SPLIT_AT_EQUAL);
-    string left = s.substr(0, split_idx), right = s.substr(split_idx+1);
-    
-    buildExpression(left, LEFT);
-    buildExpression(right, RIGHT);
-
-    /*
-    cout << left << ", " << right << endl;
-    cout << leftExps.size() << ", ops: " << leftOps.size() << endl;
-    cout << rightExps.size() << ", ops: " << rightOps.size() << endl;
-    */
+    string l = s.substr(0, split_idx), r = s.substr(split_idx+1);
+    left = buildExpression(l);
+    right = buildExpression(r);
 };
 
 
-void Cryptarithm::buildExpression(string s, Side side) {
+Expression * Cryptarithm::buildExpression(string s) {
     string buf;                 // Have a buffer string
     vector<string> tokens;
     vector<Operator *> ops;
@@ -36,25 +29,21 @@ void Cryptarithm::buildExpression(string s, Side side) {
             else if (w.compare("*") == 0)  ops.push_back(new MultOperator());
             else if (w.compare("/") == 0)  ops.push_back(new DivOperator());
         }
-    }   
-    if (side == LEFT) {
-        leftExps = exps;
-        leftOps = ops;
     }
-    else {
-        rightExps = exps;
-        rightOps = ops;
-    }
+    Expression *temp = exps[0];
+    for (int i=1; i<exps.size(); i++) {
+        temp = new BinaryExpression(temp, exps[i], ops[i-1]);
+    } 
+    return temp;
 }
 
-
 bool Cryptarithm::checkCryptarithm(int *dict) {
+    left->store(dict);
+    right->store(dict);
+    cout << left->get_name() << ": " << left->eval() << endl;
+    cout << right->get_name() << ": " << right->eval() << endl;
     return true;
 }
 
 Cryptarithm::~Cryptarithm() {
-    leftExps.clear();
-    rightExps.clear();
-    leftOps.clear();
-    rightOps.clear();
 }
