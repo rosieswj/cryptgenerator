@@ -11,20 +11,14 @@ NumberGenerator::NumberGenerator(int n, int k) {
 
 void NumberGenerator::print() { cout << "n: " << n << "  k: " << k << endl; }
 
-void NumberGenerator::generate() {
+vector<int *> NumberGenerator::getCombinations() {
   int temp[k];
   int arr[n];
   for (int i = 0; i < n; i++) {
     arr[i] = i;
   }
   generateUtil(arr, temp, 0, 0, n, k);
-  for (int i = 0; i < v.size(); i++) {
-    int* l = v.at(i);
-    for (int j = 0; j < k; j++) {
-      printf("%d ", l[j]);
-    }
-    cout << endl;
-  }
+  return v;
 }
 
 void NumberGenerator::generateUtil(int* arr, int* temp, int index, int i, int n,

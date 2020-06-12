@@ -2,6 +2,9 @@
 #define EXP_H
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <math.h>
+
 
 using namespace std;
 

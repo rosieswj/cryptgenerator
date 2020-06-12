@@ -1,5 +1,4 @@
 #include "crypt.h" 
-#include <sstream>
 
 
 Cryptarithm::Cryptarithm(string s) {
@@ -8,8 +7,27 @@ Cryptarithm::Cryptarithm(string s) {
     string l = s.substr(0, split_idx), r = s.substr(split_idx+1);
     left = buildExpression(l);
     right = buildExpression(r);
+    alphabet = buildAlphabet(s);
 };
 
+vector<char> Cryptarithm::buildAlphabet(string s) {
+    vector<char> alphabet;
+    int *seen = new int[26];
+    for (int i=0; i<s.length(); i++) {
+        if (s[i] >= 'A' && s[i] <= 'Z') {
+            if (seen[s[i]-'A'] == 0) {
+                seen[s[i]-'A'] = 1;
+                alphabet.push_back(s[i]);
+            }
+        }
+    }
+    delete[] seen;
+    return alphabet;
+}
+
+vector<char> Cryptarithm::getAlphabet() {
+    return alphabet;
+}
 
 Expression * Cryptarithm::buildExpression(string s) {
     string buf;                 // Have a buffer string
@@ -21,6 +39,7 @@ Expression * Cryptarithm::buildExpression(string s) {
     tokens.push_back(buf);
     for (string w: tokens) {
         if (TOKENS.find(w) == string::npos) {   //is an expression
+            words.push_back(w);
             exps.push_back(new WordExpression(w));
         }
         else {  //is an op
@@ -38,10 +57,20 @@ Expression * Cryptarithm::buildExpression(string s) {
 }
 
 bool Cryptarithm::checkCryptarithm(int *dict) {
+    if (!checkValidAssignment(dict)) return false; 
     left->store(dict);
     right->store(dict);
-    cout << left->get_name() << ": " << left->eval() << endl;
-    cout << right->get_name() << ": " << right->eval() << endl;
+    if (fabs(left->eval()-right->eval()) < 0.0001) {
+        return true;
+    }
+    return false;
+}
+
+bool Cryptarithm::checkValidAssignment(int *dict) {
+    for (string w: words) {
+        char firstChar = w[0];
+        if (dict[firstChar-'A'] == 0) return false;
+    }
     return true;
 }
 
