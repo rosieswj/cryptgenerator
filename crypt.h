@@ -4,7 +4,6 @@
 #include <vector>
 #include <set>
 
-
 #include "exp.h"
 #include "operator.h"
 #include "binaryexp.h"
@@ -24,8 +23,13 @@ class Cryptarithm {
     public:
         ~Cryptarithm();
         Cryptarithm(string s);
+        const static int ALPHABET_MAX_SIZE = 26;
+        const static int ALPHABET_RANGE = 10;
+        const static char ALPHABET_START = 'A';
+        const static char ALPHABET_END = 'Z';
         bool checkCryptarithm(int *dict);
         vector<char> getAlphabet();
+        void solve();
 };
 
 #endif

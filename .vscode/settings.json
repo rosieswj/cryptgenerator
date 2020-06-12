@@ -7,6 +7,9 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "algorithm": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "__locale": "cpp"
     }
 }

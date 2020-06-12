@@ -9,9 +9,9 @@ CFILES = num_generator.cpp 	exp.cpp operator.cpp binaryexp.cpp 	crypt.cpp main.c
 HFILES = num_generator.h		exp.h  	operator.h  binaryexp.h  crypt.h
 
 image: $(CFILES) $(HFILES)
-	$(CXX) $(CFLAGS) $(LDFLAGS) $(OMP) -o solve $(CFILES)
+	$(CXX) $(CFLAGS) $(LDFLAGS) $(OMP) -o solveCryptarithm $(CFILES)
 
 clean:
-	$(RM) -f solve
+	$(RM) -f solveCryptarithm
 	$(RM) -rf *.dSYM
 

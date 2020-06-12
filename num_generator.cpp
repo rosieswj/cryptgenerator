@@ -9,7 +9,7 @@ NumberGenerator::NumberGenerator(int n, int k) {
   this->k = k;
 }
 
-void NumberGenerator::print() { cout << "n: " << n << "  k: " << k << endl; }
+void NumberGenerator::printInfo() { cout << "n: " << n << ", k: " << k << endl; }
 
 vector<int *> NumberGenerator::getCombinations() {
   int temp[k];

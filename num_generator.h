@@ -14,7 +14,7 @@ class NumberGenerator {
  public:
   NumberGenerator(int n, int k);
   ~NumberGenerator() { v.clear(); }
-  void print();
+  void printInfo();
   vector<int *> getCombinations();
 };
 
