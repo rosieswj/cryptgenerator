@@ -1,6 +1,6 @@
 # cryptgenerator
 
-Simple program to solve Cryptarithm using a random number generator. Quick practice for using class/polymorphism in C++. 
+Simple program to solve Cryptarithm using a random number generator. Quick OOP practice for using class/polymorphism in C++. 
 
 ## Usage
 Clone the repo. Run ```make``` and then ```./solveCryptarithm``` to start the program. 
